@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SDHD Banjar Jakarta Utara</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+
+    <style>
+      /* Custom Styles & Color Variables */
+      :root {
+        --primary-color: #2c3e50; /* Deep Blue/Grey - Trust & Stability */
+        --accent-color: #d4af37; /* Gold/Bronze - Warmth & Tradition */
+        --light-bg: #f8f9fa;
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .navbar-brand {
+        font-family: "Playfair Display", serif;
+      }
+
+      /* Navbar Styling */
+      .navbar {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        background-color: #fff;
+        padding: 1rem 0;
+      }
+
+      .navbar-brand {
+        font-size: 1.5rem;
+        color: var(--primary-color) !important;
+        font-weight: bold;
+      }
+
+      .nav-link {
+        color: #555;
+        font-weight: 500;
+        margin-left: 15px;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--accent-color);
+      }
+
+      /* Buttons */
+      .btn-primary {
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        background-color: #bfa13d;
+        border-color: #bfa13d;
+      }
+
+      /* Hero Section with Parallax-like effect */
+      .hero-section {
+        background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url("img/pura-dalem.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 85vh;
+        display: flex;
+        align-items: center;
+        color: white;
+        text-align: center;
+      }
+
+      /* General Section Styling */
+      .section-padding {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        margin-bottom: 50px;
+        color: var(--primary-color);
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: var(--accent-color);
+        margin: 15px auto 0;
+      }
+
+      /* Ministry Cards */
+      .card {
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .service-icon {
+        font-size: 3rem;
+        color: var(--accent-color);
+        margin-bottom: 20px;
+      }
+
+      /* Event List Items */
+      .event-item {
+        border-left: 4px solid var(--accent-color);
+        transition: background-color 0.3s;
+      }
+      .event-item:hover {
+        background-color: #f8f9fa;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--primary-color);
+        color: rgba(255, 255, 255, 0.8);
+        padding: 70px 0 30px;
+      }
+
+      footer h5 {
+        color: #fff;
+        margin-bottom: 25px;
+        font-weight: 700;
+      }
+
+      footer a {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      footer a:hover {
+        color: var(--accent-color);
+      }
+
+      footer ul li {
+        margin-bottom: 10px;
+      }
+
+      /* Membuat transisi antar modal terasa mulus */
+      .modal.fade .modal-dialog {
+        transition: transform 0.3s ease-out;
+      }
+
+      /* Memastikan ukuran gambar QR responsif namun tidak pecah */
+      #qrisModal img.img-fluid {
+        border-radius: 10px;
+      }
+
+      /* Ukuran extra small untuk ID Merchant */
+      .x-small {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"><i class="fas fa-temple me-2"></i> SDHD Banjar Jakarta Utara </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link active" href="#home">Beranda</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">Tentang Kami</a></li>
+            <li class="nav-item"><a class="nav-link" href="#ministries">Artikel</a></li>
+            <li class="nav-item"><a class="nav-link" href="event.html">Kegiatan</a></li>
+            <li class="nav-item"><a href="galeri.html" class="nav-link">Galeri</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Hubungi Kami</a></li>
+            &ensp;
+            <button type="button" class="btn btn-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#donateModal">Dana Punia</button>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="modal fade" id="donateModal" tabindex="-1" aria-labelledby="donateModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 20px">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold" id="donateModalLabel">Dukung Kegiatan Kami</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body p-4">
+            <div class="text-center mb-4">
+              <div class="icon-box bg-warning bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
+                <i class="fas fa-hand-holding-heart text-warning fs-1"></i>
+              </div>
+              <p class="text-muted small">Dana Punia Anda membantu kami dalam pemeliharaan Pura dan pelayanan umat di Jakarta Utara.</p>
+            </div>
+
+            <div class="card bg-light border-0 mb-3" style="border-radius: 15px">
+              <div class="card-body d-flex align-items-center p-3">
+                <div class="me-3">
+                  <img src="https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/1200px-BNI_logo.svg.png" alt="BNI" style="width: 60px" />
+                </div>
+                <div>
+                  <p class="mb-0 x-small text-muted fw-bold">Bank BNI</p>
+                  <h5 class="fw-bold mb-0">1234-567-890</h5>
+                  <p class="mb-0 small">a.n SDHD Banjar Jakarta Utara</p>
+                </div>
+                <button class="btn btn-sm btn-outline-secondary ms-auto rounded-pill px-3" onclick="navigator.clipboard.writeText('1234567890')">Salin</button>
+              </div>
+            </div>
+
+            <div class="card bg-light border-0" style="border-radius: 15px">
+              <div class="card-body d-flex align-items-center p-3">
+                <div class="me-3 text-center" style="width: 60px">
+                  <i class="fas fa-qrcode fs-2 text-primary"></i>
+                </div>
+                <div>
+                  <h5 class="fw-bold mb-0">QRIS Yayasan</h5>
+                  <p class="mb-0 small">Dukung lewat e-wallet (GoPay, OVO, Dana)</p>
+                </div>
+                <button type="button" class="btn btn-sm btn-primary ms-auto rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#qrisModal">Buka QR</button>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-top text-center">
+              <p class="mb-0 x-small text-muted">
+                Konfirmasi Donasi: <a href="https://wa.me/62812345678" target="_blank" class="text-success text-decoration-none fw-bold"><i class="fab fa-whatsapp me-1"></i> WhatsApp Admin</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="qrisModal" tabindex="-1" aria-labelledby="qrisModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg text-center" style="border-radius: 25px">
+          <div class="modal-header border-0 pb-0">
+            <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body p-4 pt-0">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo_QRIS.svg/1200px-Logo_QRIS.svg.png" alt="Logo QRIS" class="mb-3" style="width: 100px" />
+
+            <h5 class="fw-bold mb-1">QRIS Yayasan</h5>
+            <p class="text-muted small mb-4">SDHD Banjar Jakarta Utara</p>
+
+            <div class="bg-white p-3 shadow-sm border mx-auto mb-4" style="border-radius: 15px; max-width: 250px">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=SDHD_Banjar_Jakarta_Utara" class="img-fluid" alt="QR Code Donasi" />
+            </div>
+
+            <p class="small text-muted mb-0">Pindai menggunakan aplikasi:</p>
+            <div class="d-flex justify-content-center gap-3 mt-2 opacity-75">
+              <i class="fab fa-google-pay fs-4"></i>
+              <i class="fas fa-wallet fs-4"></i>
+              <i class="fas fa-university fs-4"></i>
+            </div>
+
+            <button type="button" class="btn btn-light rounded-pill w-100 mt-4 fw-bold" data-bs-target="#donateModal" data-bs-toggle="modal"><i class="fas fa-arrow-left me-2"></i> Kembali</button>
+          </div>
+
+          <div class="modal-footer border-0 bg-light py-2" style="border-radius: 0 0 25px 25px">
+            <p class="w-100 text-center x-small mb-0 text-muted">ID: NMIDXXXXXXXXX</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="home" class="hero-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 animate-up">
+            <h1 class="display-3 fw-bold mb-4">SDHD Banjar Jakarta Utara</h1>
+            <p class="lead fs-4 mb-5">Organisasi Keagamaan ini hadir sebagai ruang yang aman, bermakna, dan bermartabat bagi umat untuk menjalankan kehidupan beragama secara tertib, berkelanjutan, dan penuh tanggung jawab.</p>
+            <div class="d-flex justify-content-center gap-3">
+              <a href="#contact" class="btn btn-primary btn-lg rounded-pill px-5">Agenda Kami</a>
+              <a href="#about" class="btn btn-outline-light btn-lg rounded-pill px-5">Pelajari Lebih Lanjut</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section id="about" class="section-padding bg-white text-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <h2 class="section-title">Who We Are</h2>
+            <p class="lead text-muted mb-4 fst-italic">"Building a community grounded in faith and serving with love."</p>
+            <p class="mb-5">
+              Grace Community is dedicated to spreading hope and compassion. We believe in creating an inclusive environment where everyone feels welcome, regardless of their background. Our mission is to serve our neighbors, support
+              spiritual growth, and make a positive impact in the world.
+            </p>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-4 mb-4">
+            <i class="fas fa-heart service-icon"></i>
+            <h4>Loving Community</h4>
+            <p>We foster deep connections through support groups, fellowship, and shared meals.</p>
+          </div>
+          <div class="col-md-4 mb-4">
+            <i class="fas fa-book-open service-icon"></i>
+            <h4>Biblical Teaching</h4>
+            <p>Our teachings are rooted in scripture, offering practical guidance for modern daily life.</p>
+          </div>
+          <div class="col-md-4 mb-4">
+            <i class="fas fa-hands-helping service-icon"></i>
+            <h4>Global Outreach</h4>
+            <p>We are committed to serving the local and global community through various missions.</p>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <section id="demographics" class="section-padding bg-light">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">Data Demografi Umat</h2>
+          <p class="mb-5 text-muted">Transparansi data kependudukan SDHD Banjar Jakarta Utara untuk pelayanan yang lebih baik.</p>
+        </div>
+
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="row g-4">
+              <div class="col-sm-6">
+                <div class="card border-0 shadow-sm h-100 p-3">
+                  <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                      <div class="icon-box bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                        <i class="fas fa-male text-primary fs-3"></i>
+                      </div>
+                      <h5 class="card-title mb-0">Laki-laki</h5>
+                    </div>
+                    <h2 class="fw-bold mb-1">913.199</h2>
+                    <p class="text-muted small mb-0">Umat (Jakarta Utara)</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card border-0 shadow-sm h-100 p-3">
+                  <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                      <div class="icon-box bg-danger bg-opacity-10 p-3 rounded-circle me-3">
+                        <i class="fas fa-female text-danger fs-3"></i>
+                      </div>
+                      <h5 class="card-title mb-0">Perempuan</h5>
+                    </div>
+                    <h2 class="fw-bold mb-1">895.786</h2>
+                    <p class="text-muted small mb-0">Umat (Jakarta Utara)</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="card border-0 shadow-sm bg-primary text-white p-2">
+                  <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                      <h5 class="mb-0">Total Umat Terdata</h5>
+                      <small class="opacity-75">Berdasarkan Pendataan</small>
+                    </div>
+                    <h2 class="fw-bold mb-0">1.808.985</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5 offset-lg-1 text-center">
+            <div class="card border-0 shadow-sm p-4">
+              <h5 class="fw-bold mb-4">Persentase Gender</h5>
+              <div style="max-width: 300px; margin: 0 auto">
+                <canvas id="genderChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ministries" class="section-padding" style="background-color: var(--light-bg)">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">Artikel Terbaru</h2>
+          <p class="mb-5 text-muted">There is a place for everyone to serve and grow.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100">
+              <img src="./img/pura-dalem.jpg" class="card-img-top" alt="Youth Ministry" style="height: 200px; object-fit: cover" />
+              <div class="card-body text-center p-4">
+                <h5 class="card-title fw-bold">Youth & Kids</h5>
+                <p class="card-text text-muted">Engaging programs for children and teens to learn and have fun in a safe environment.</p>
+                <a href="#" class="btn btn-outline-secondary btn-sm rounded-pill mt-2">Read More</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100">
+              <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Community Outreach" style="height: 200px; object-fit: cover" />
+              <div class="card-body text-center p-4">
+                <h5 class="card-title fw-bold">Community Outreach</h5>
+                <p class="card-text text-muted">Food drives, shelter support, and volunteer opportunities to help those in need.</p>
+                <a href="#" class="btn btn-outline-secondary btn-sm rounded-pill mt-2">Read More</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100">
+              <img src="https://images.unsplash.com/photo-1511632765486-a019809dd04f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Music & Worship" style="height: 200px; object-fit: cover" />
+              <div class="card-body text-center p-4">
+                <h5 class="card-title fw-bold">Music & Worship</h5>
+                <p class="card-text text-muted">Join our choir or worship band to use your musical talents for praise.</p>
+                <a href="#" class="btn btn-outline-secondary btn-sm rounded-pill mt-2">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section id="events" class="section-padding bg-white">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">Upcoming Events</h2>
+        </div>
+        <div class="row justify-content-center mt-4">
+          <div class="col-lg-9">
+            <div class="d-flex mb-4 p-4 border rounded align-items-center event-item bg-white shadow-sm">
+              <div class="text-center me-4 px-3 py-2 bg-light rounded border">
+                <span class="d-block fw-bold text-uppercase text-muted" style="font-size: 0.8rem">DEC</span>
+                <span class="d-block display-6 fw-bold" style="color: var(--primary-color)">24</span>
+              </div>
+              <div class="flex-grow-1">
+                <h5 class="mb-1 fw-bold">Christmas Eve Service</h5>
+                <p class="mb-0 text-muted small"><i class="far fa-clock me-1"></i> 6:00 PM - 8:00 PM &nbsp;|&nbsp; <i class="fas fa-map-marker-alt me-1"></i> Main Sanctuary</p>
+              </div>
+              <div class="ms-auto d-none d-sm-block">
+                <button class="btn btn-sm btn-outline-primary rounded-pill px-3">Details</button>
+              </div>
+            </div>
+            <div class="d-flex mb-4 p-4 border rounded align-items-center event-item bg-white shadow-sm">
+              <div class="text-center me-4 px-3 py-2 bg-light rounded border">
+                <span class="d-block fw-bold text-uppercase text-muted" style="font-size: 0.8rem">JAN</span>
+                <span class="d-block display-6 fw-bold" style="color: var(--primary-color)">05</span>
+              </div>
+              <div class="flex-grow-1">
+                <h5 class="mb-1 fw-bold">New Year Fellowship Lunch</h5>
+                <p class="mb-0 text-muted small"><i class="far fa-clock me-1"></i> 12:00 PM - 2:00 PM &nbsp;|&nbsp; <i class="fas fa-map-marker-alt me-1"></i> Community Hall</p>
+              </div>
+              <div class="ms-auto d-none d-sm-block">
+                <button class="btn btn-sm btn-outline-primary rounded-pill px-3">Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <section id="donate" class="section-padding text-white text-center" style="background-color: var(--primary-color)">
+      <div class="container">
+        <h2 class="mb-3">Dukung Kegiatan Kami</h2>
+        <p class="lead mb-4 col-lg-8 mx-auto text-light opacity-75">Dana Punia Anda membantu kami dalam pemeliharaan Pura dan pelayanan umat di Jakarta Utara.</p>
+        <button type="button" class="btn btn-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#donateModal">Dana Punia</button>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-5 mb-md-0">
+            <h5>SDHD Banjar Jakarta Utara</h5>
+            <p class="small">
+              SDHD Banjar Jakarta Utara berfungsi sebagai forum resmi bagi masyarakat untuk mempraktikkan, memelihara, dan mengembangkan kehidupan keagamaan secara terstruktur dan berkelanjutan, berdasarkan nilai-nilai spiritual, moral, dan
+              sosial. <br />
+              <br />SDHD Banjar Jakarta Utara berfungsi sebagai sarana untuk mempersatukan masyarakat, memperkuat iman, dan memberikan pelayanan kepada masyarakat.
+            </p>
+            <div class="mt-4">
+              <!-- <a href="#" class="me-3"><i class="fab fa-facebook fa-lg"></i></a> -->
+              <a href="https://www.instagram.com/media.banjar_jakarta.utara/" class="me-3"><i class="fab fa-instagram fa-lg"></i></a>
+              <a href="https://www.youtube.com/channel/UCqJdiP2yguik5RNJ5jD1Ltg" class="me-3"><i class="fab fa-youtube fa-lg"></i></a>
+              <!-- <a href="#" class="me-3"><i class="fab fa-twitter fa-lg"></i></a> -->
+            </div>
+          </div>
+          <div class="col-md-4 mb-5 mb-md-0">
+            <h5>Service Times</h5>
+            <ul class="list-unstyled">
+              <li><strong>Sunday Worship:</strong> 9:00 AM & 11:00 AM</li>
+              <li><strong>Sunday School:</strong> 10:00 AM</li>
+              <li><strong>Wednesday Bible Study:</strong> 7:00 PM</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Contact Us</h5>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-map-marker-alt me-2 text-warning"></i> Jl. Raya Cilincing No.Kel, RT.15/RW.16, Semper Bar., Kec. Cilincing, Jkt Utara, Daerah Khusus Ibukota Jakarta 14130</li>
+              <!-- <li><i class="fas fa-phone me-2 text-warning"></i> (555) 123-4567</li>
+              <li><i class="fas fa-envelope me-2 text-warning"></i> info@gracecommunity.org</li> -->
+            </ul>
+          </div>
+        </div>
+        <hr class="bg-light opacity-25 mt-5" />
+        <div class="text-center mt-4">
+          <small class="opacity-75">&copy; 2023 - 2025. &ensp;SDHD Banjar Jakarta Utara. All Rights Reserved.&ensp;</small>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Close mobile menu on click
+      const navLinks = document.querySelectorAll(".nav-link");
+      const menuToggle = document.getElementById("navbarNav");
+      const bsCollapse = new bootstrap.Collapse(menuToggle, { toggle: false });
+
+      navLinks.forEach((l) => {
+        l.addEventListener("click", () => {
+          if (menuToggle.classList.contains("show")) {
+            bsCollapse.hide();
+          }
+        });
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      const ctx = document.getElementById("genderChart").getContext("2d");
+      new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: ["Laki-laki", "Perempuan"],
+          datasets: [
+            {
+              data: [50.5, 49.5], // Angka persentase
+              backgroundColor: ["#2c3e50", "#d4af37"], // Menggunakan warna tema Anda
+              hoverOffset: 4,
+              borderWidth: 0,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "bottom",
+            },
+          },
+          cutout: "70%", // Membuat grafik terlihat lebih modern (tipis)
+        },
+      });
+    </script>
+  </body>
+</html>
