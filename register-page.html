@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banjar Jakut APP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8f9fa;
+      }
+
+      .login-wrapper {
+        min-height: 100vh;
+      }
+
+      /* Bagian Gambar (Kiri) */
+      .bg-image {
+        background-image: url("img/pura-dalem.jpg");
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .bg-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      .image-caption {
+        position: absolute;
+        bottom: 2rem;
+        left: 2rem;
+        color: white;
+        z-index: 2;
+      }
+
+      /* Bagian Form (Kanan) */
+      .form-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        padding: 2rem;
+      }
+
+      .form-container {
+        width: 100%;
+        max-width: 420px;
+      }
+
+      .form-control:focus {
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+        border-color: #0d6efd;
+      }
+
+      .btn-primary {
+        padding: 0.8rem;
+        font-weight: 600;
+      }
+
+      .btn-google {
+        border: 1px solid #dee2e6;
+        background: white;
+        color: #495057;
+        font-weight: 500;
+        padding: 0.8rem;
+      }
+
+      .btn-google:hover {
+        background-color: #f8f9fa;
+      }
+
+      .password-toggle {
+        cursor: pointer;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid p-0">
+      <div class="row g-0 login-wrapper">
+        <div class="col-lg-7 d-none d-lg-block bg-image">
+          <div class="image-caption">
+            <h2 class="fw-bold">SDHD Banjar Jakarta Utara</h2>
+            <p class="lead">Banjar Jakut APP</p>
+          </div>
+        </div>
+
+        <div class="col-lg-5 form-section">
+          <div class="form-container py-4">
+            <div class="mb-4 text-center text-lg-start">
+              <h3 class="fw-bold mt-3">Buat Akun Baru</h3>
+              <p class="text-muted">Lengkapi data di bawah ini untuk mendaftar.</p>
+            </div>
+
+            <form>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="nameInput" placeholder="John Doe" required />
+                <label for="nameInput">Nama Lengkap</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" required />
+                <label for="emailInput">Alamat Email</label>
+              </div>
+
+              <div class="input-group mb-3">
+                <div class="form-floating flex-grow-1">
+                  <input type="password" class="form-control" id="passwordInput" placeholder="Password" style="border-right: 0" required />
+                  <label for="passwordInput">Kata Sandi</label>
+                </div>
+                <span class="input-group-text bg-white border-start-0 password-toggle" onclick="togglePassword('passwordInput', 'toggleIcon')">
+                  <i class="bi bi-eye-slash" id="toggleIcon"></i>
+                </span>
+              </div>
+
+              <div class="input-group mb-3">
+                <div class="form-floating flex-grow-1">
+                  <input type="password" class="form-control" id="confirmPasswordInput" placeholder="Confirm Password" style="border-right: 0" required />
+                  <label for="confirmPasswordInput">Konfirmasi Sandi</label>
+                </div>
+                <span class="input-group-text bg-white border-start-0 password-toggle" onclick="togglePassword('confirmPasswordInput', 'toggleIconConfirm')">
+                  <i class="bi bi-eye-slash" id="toggleIconConfirm"></i>
+                </span>
+              </div>
+
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" value="" id="termsCheck" required />
+                <label class="form-check-label text-secondary small" for="termsCheck"> Saya setuju dengan <a href="#" class="text-decoration-none">Syarat & Ketentuan</a> serta Kebijakan Privasi yang berlaku. </label>
+              </div>
+
+              <div class="d-grid mb-4">
+                <button type="submit" class="btn btn-primary btn-lg">Daftar Akun</button>
+              </div>
+
+              <div class="d-flex align-items-center mb-4">
+                <hr class="flex-grow-1 m-0 text-secondary" />
+                <span class="px-3 text-muted small">atau daftar melalui</span>
+                <hr class="flex-grow-1 m-0 text-secondary" />
+              </div>
+
+              <div class="d-grid">
+                <button type="button" class="btn btn-google"><i class="bi bi-google me-2 text-danger"></i> Daftar dengan Google</button>
+              </div>
+
+              <div class="text-center mt-4">
+                <p class="text-muted">Sudah punya akun? <a href="login.html" class="text-primary text-decoration-none fw-bold">Login disini</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Fungsi Toggle Password yang lebih fleksibel untuk dua field
+      function togglePassword(inputId, iconId) {
+        const passwordInput = document.getElementById(inputId);
+        const toggleIcon = document.getElementById(iconId);
+
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          toggleIcon.classList.remove("bi-eye-slash");
+          toggleIcon.classList.add("bi-eye");
+        } else {
+          passwordInput.type = "password";
+          toggleIcon.classList.remove("bi-eye");
+          toggleIcon.classList.add("bi-eye-slash");
+        }
+      }
+    </script>
+  </body>
+</html>
